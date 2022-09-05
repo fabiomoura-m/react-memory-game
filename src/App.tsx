@@ -35,6 +35,15 @@ export function App() {
             });
         }
         // 2.2 - fill the grid
+        for (let w = 0; w < 2; w++) {
+            for (let i = 0; i < items.length; i++) {
+                let position = -1;
+                while (position < 0 || temporaryGrid[position].item !== null) {
+                    position = Math.floor(Math.random() * (items.length * 2));
+                }
+                temporaryGrid[position].item = i;
+            }
+        }
 
         // 2.3 - move to state
         setGridItems(temporaryGrid);
