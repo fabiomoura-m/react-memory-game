@@ -41,10 +41,17 @@ export const GridArea = styled.div`
     flex: 1;
     display: flex;
     justify-content: flex-end;
-    background-color: #ff0000;
+    border: 2px solid black;
 
     @media (max-width: 750px) {
         justify-content: center;
         margin: 0 20px;
     }
+`;
+
+export const Grid = styled.div`
+    width: 430px;
+    display: grid;
+    grid-template-columns: repet(4, 1fr);
+    grid-template-columns: 10px;
 `;
