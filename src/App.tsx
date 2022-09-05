@@ -29,6 +29,39 @@ export function App() {
         return () => clearInterval(timer);
     }, [playing]);
 
+    //verify if opened are equal
+    useEffect(() => {
+        if (shownCount === 2) {
+            let opened = gridItems.filter(item => item.shown === true);
+            if (opened.length === 2) {
+                // if both are equal, make every "shown" permanent
+                if (opened[0].item === opened[1].item) {
+                    let templateGrid = [...gridItems];
+                    for (let i in templateGrid) {
+                        if (templateGrid[i].shown) {
+                            templateGrid[i].permanentShown = true;
+                            templateGrid[i].shown = false;
+                        }
+                    }
+                    setGridItems(templateGrid);
+                    setShownCount(0);
+                } else {
+                    // if they are not equal, close all "shown"
+                    setTimeout(() => {
+                        let templateGrid = [...gridItems];
+                        for (let i in templateGrid) {
+                            templateGrid[i].shown = false;
+                        }
+                        setGridItems(templateGrid);
+                        setShownCount(0);
+                    }, 1000);
+                }
+
+                setMoveCount(moveCount => moveCount + 1);
+            }
+        }
+    }, [shownCount, gridItems]);
+
     const resetAndCreateGrid = () => {
         // step 1 - reset the game
         setTimeElapsed(0);
@@ -63,7 +96,21 @@ export function App() {
         setPlaying(true);
     };
 
-    const handleItemClick = (index): number => {};
+    const handleItemClick = (index: number) => {
+        if (playing && index !== null && shownCount < 2) {
+            let templateGrid = [...gridItems];
+
+            if (
+                templateGrid[index].permanentShown === false &&
+                templateGrid[index].shown === false
+            ) {
+                templateGrid[index].shown = true;
+                setShownCount(shownCount => shownCount + 1);
+            }
+
+            setGridItems(templateGrid);
+        }
+    };
 
     return (
         <C.Container>
@@ -77,7 +124,7 @@ export function App() {
                         label="Tempo"
                         value={formatTimeElapsed(timeElapsed)}
                     />
-                    <InfoItem label="Movimentos" value="0" />
+                    <InfoItem label="Movimentos" value={moveCount.toString()} />
                 </C.InfoArea>
 
                 <Button
