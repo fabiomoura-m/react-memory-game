@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import * as C from './App.styles';
 import LogoImage from './assets/devmemory_logo.png';
 import { Button } from './components/Button';
+import { GridItem } from './components/GridItem';
 import { InfoItem } from './components/InfoItem';
 import { items } from './data/items';
 import RestartIcon from './icons/restart.svg';
@@ -52,6 +53,8 @@ export function App() {
         setPlaying(true);
     };
 
+    const handleItemClick = (index): number => {};
+
     return (
         <C.Container>
             <C.Info>
@@ -71,7 +74,15 @@ export function App() {
                 />
             </C.Info>
             <C.GridArea>
-                <C.Grid></C.Grid>
+                <C.Grid>
+                    {gridItems.map((item, index) => (
+                        <GridItem
+                            key={Math.random()}
+                            item={item}
+                            onClick={() => handleItemClick(index)}
+                        />
+                    ))}
+                </C.Grid>
             </C.GridArea>
         </C.Container>
     );
