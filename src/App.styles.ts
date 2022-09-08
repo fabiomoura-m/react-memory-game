@@ -29,7 +29,7 @@ export const LogoLink = styled.a`
 
 export const InfoArea = styled.div`
     width: 100%;
-    margin: 10px 0;
+    margin: 25px 0;
     @media (max-width: 750px) {
         display: flex;
         justify-content: space-around;
@@ -57,4 +57,11 @@ export const Grid = styled.div`
     @media (max-width: 750px) {
         grid-template-columns: repeat(3, 1fr);
     }
+`;
+
+export const Footer = styled.footer`
+    text-align: center;
+    font-size: 14px;
+    color: #ccc;
+    margin-bottom: 20px;
 `;

@@ -1,6 +1,6 @@
 import { GridItemType } from '../../types/GridItemType';
 import * as C from './styles';
-import b7Svg from '../../icons/b7.svg';
+import Background from '../../icons/background.svg';
 import { items } from '../../data/items';
 
 type Props = {
@@ -15,7 +15,7 @@ export function GridItem({ item, onClick }: Props) {
             onClick={onClick}
         >
             {item.permanentShown === false && item.shown === false && (
-                <C.Icon src={b7Svg} alt="" opacity={0.1} />
+                <C.Icon src={Background} alt="" opacity={0.6} />
             )}
             {(item.permanentShown || item.shown) && item.item !== null && (
                 <C.Icon src={items[item.item].icon} alt="" />

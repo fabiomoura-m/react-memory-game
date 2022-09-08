@@ -123,37 +123,43 @@ export function App() {
     };
 
     return (
-        <C.Container>
-            <C.Info>
-                <C.LogoLink href="">
-                    <img src={LogoImage} alt="" width={200} />
-                </C.LogoLink>
+        <>
+            <C.Container>
+                <C.Info>
+                    <C.LogoLink href="">
+                        <img src={LogoImage} alt="" width={200} />
+                    </C.LogoLink>
 
-                <C.InfoArea>
-                    <InfoItem
-                        label="Tempo"
-                        value={formatTimeElapsed(timeElapsed)}
-                    />
-                    <InfoItem label="Movimentos" value={moveCount.toString()} />
-                </C.InfoArea>
-
-                <Button
-                    label="Reiniciar"
-                    icon={RestartIcon}
-                    onClick={resetAndCreateGrid}
-                />
-            </C.Info>
-            <C.GridArea>
-                <C.Grid>
-                    {gridItems.map((item, index) => (
-                        <GridItem
-                            key={Math.random()}
-                            item={item}
-                            onClick={() => handleItemClick(index)}
+                    <C.InfoArea>
+                        <InfoItem
+                            label="Tempo"
+                            value={formatTimeElapsed(timeElapsed)}
                         />
-                    ))}
-                </C.Grid>
-            </C.GridArea>
-        </C.Container>
+                        <InfoItem
+                            label="Movimentos"
+                            value={moveCount.toString()}
+                        />
+                    </C.InfoArea>
+
+                    <Button
+                        label="Reiniciar"
+                        icon={RestartIcon}
+                        onClick={resetAndCreateGrid}
+                    />
+                </C.Info>
+                <C.GridArea>
+                    <C.Grid>
+                        {gridItems.map((item, index) => (
+                            <GridItem
+                                key={Math.random()}
+                                item={item}
+                                onClick={() => handleItemClick(index)}
+                            />
+                        ))}
+                    </C.Grid>
+                </C.GridArea>
+            </C.Container>
+            <C.Footer>Powered by Fabio Moura</C.Footer>
+        </>
     );
 }
