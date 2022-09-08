@@ -62,6 +62,16 @@ export function App() {
         }
     }, [shownCount, gridItems]);
 
+    //verify if game is over
+    useEffect(() => {
+        if (
+            moveCount > 0 &&
+            gridItems.every(item => item.permanentShown === true)
+        ) {
+            setPlaying(false);
+        }
+    }, [moveCount, gridItems]);
+
     const resetAndCreateGrid = () => {
         // step 1 - reset the game
         setTimeElapsed(0);
