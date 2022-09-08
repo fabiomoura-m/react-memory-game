@@ -5,7 +5,7 @@ export const Container = styled.div`
     max-width: 750px;
     margin: auto;
     display: flex;
-    padding: 50px 0;
+    padding: 50px 0px;
 
     @media (max-width: 750px) {
         flex-direction: column;
@@ -53,4 +53,8 @@ export const Grid = styled.div`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
+
+    @media (max-width: 750px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
 `;
